@@ -1,0 +1,73 @@
+Projeto de um jogo de adivinhação feito com base no Projeto 1 do curso "Programação em Python do básico ao avançado". Trabalhei ele um pouco da minha forma, adicionando duas classes
+que ajudam a controlar o jogo.
+
+A primeira classe é a "Score", é basicamente uma classe para controlar a pontuação do jogador durante o jogo.
+
+A segunda classe é a "Operation", que vai controlar cada operação do jogo.
+
+No final da página explico melhor cada classe e seus métodos.
+
+COMO JOGAR:
+
+Execute o arquivo main.py, quando ele começar vai pedir que você escolhe um nível de dificuldade (no final da página falo de cada nível).
+Em cada rodada será gerado uma nova operação que se respondida corretamente irá somar um ponto ao seu score final. Em cada rodada, acertando ou errando, você pode escolher parar ou continuar.
+
+Caso você escolha jogar novamente, uma nova rodada com a mesma dificuldade será iniciada. Caso contrário o jogo será encerrado.
+
+OBS: Só é possível mudar a dificuldade encerrando o jogo atual e começando novamente.
+
+
+FUNCÕES:
+
+Dentro do arquivo main.py existem 3 funções para o jogo ser executado. São elas: main(), set_difficulty() e 
+start_game(). Abaixo falo um pouco mais de cada uma:
+
+- main(): A função main() é executada para iniciar o jogo. Não recebe parametro nenhum. Responsável por definir a variavel "difficulty" chamando a função set_difficulty() e depois chamando a função start_game() com os parametros: 0 -> score inicial de todo novo jogo e "difficulty" -> variavel que guarda a dificuldade escolhida.
+
+- set_difficulty(): A função set_difficulty() é chamada para definir a dificuldade do jogo. Não recebe parametro nenhum. Imprime um input para o jogador escolher uma dificuldade classificada de 1 - 4, tratando um possível erro de "ValueErro" (caso o digitado não seja um número) e considerando a condição de ser digitado um número maior que 4. Em ambos os casos, é exibida uma mensagem de erro e a função é chamada novamente.
+
+- start_game(): A função start_game() é chamada para iniciar o jogo de fato. Recebe como parametro o score inicial e a dificuldade do jogo. Começa sua execução criando um objeto "Score" que recebe como parametro a pontuacao inicial, e um objeto "Operation" que recebe como parametro a dificuldade inicial. É exibida a conta que deve ser respondida pelo jogador. Para que possa tratar algumas condições de respostas que não são válidas, criasse uma variavel booleano "try_again" para ser usada em um laço while. Logo após isso, é gerado o input para o jogador digitar a resposta e novamente é tratado o erro de "ValueErro". Se a resposta for um valor válido, o laço chega ao fim. Se a resposta estiver correta, é exibida uma mensagem na tela, a pontuação é atualizada. Caso contrário, apenas é exibida outra mensagem na tela. Após isso é exbida a pontuação do jogador e é perguntado se deseja jogar novamente. Se sim, um novo round é iniciado. Se não, o jogo é fechado e a pontuação é exibida. 
+
+
+CLASSES E MÉTODOS:
+
+- Score:
+A classe Score é a classe para gerenciar a pontuação do jogador. Ele possui como atributos o valor inicial e o valor atual da pontuação do jogador.
+
+Seus métodos são: 
+    update_score() -> Atualiza a pontuação atual do jogador
+
+    return_score() -> Retorna a pontuação atual do jogador
+
+- Operation:
+A classe Operation é a classe responsável por gerenciar as operações exibidas para o jogador e assim como o resultado. Ela possui como atributos a dificuldade e o resultado da operacao atual.
+
+Seus métodos são:
+    get_numbers() -> Usando o randint e um dicionario para associar o nível com os digitos mais altos possíves, o metodo retorna um array contendo dois valores aleatorios que serão usados na operação.
+
+    get_operation_sign() -> Usando o randint e um dicionario para associar o nível com os sinais possíveis, o metodo retorna o sinal que será usado na operação.
+
+    get_operation_string() -> O metodo chama os metodos anteriores para gerar os digitos e o sinal, e retorna a string formatada da operação que será feita.
+
+    get_operation_result() -> Usando a função eval() o metodo retorna a resposta da operacao.
+
+    operation_manager() -> Metodo responsavel por gerenciar todos os outros. Pega um novo par de digitos, atualiza na classe e retorna a string que será passada para o jogador.
+
+DIFICULDADES:
+
+1 - Numeros de 0 - 10 e apenas operações de soma e subtração
+
+2 - Numeros de 0 - 20 e apenas operações de soma e subtração
+
+3 - Numeros de 0 - 50 e operações de soma, subtração, multiplicação e divisão
+
+4 - Numeros de 0 - 100 e operações de soma, subtração, multiplicação e divisão
+
+
+OBS. Para divisão o resultado é aproximado em 2 casas decimais
+
+
+O jogo é bem simples e foi feito para práticar um pouco de alguns conceitos em Python. Qualquer dúvida ou esclarecimento meu email e meu linkedin estão abertos. :)
+
+Email: contato@joaogabriel.co
+Linkedin: linkedin.com/in/joaogabsoares/
